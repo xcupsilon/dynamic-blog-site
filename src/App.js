@@ -1,9 +1,12 @@
 import React from 'react'
+import About from './components/About'
+import Blogs from './components/Blogs'
 
 function App() {
   return (
     <>
-      <div>Hello World</div>
+      <About />
+      <Blogs />
     </>
   )
 }
