@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Input from './Input'
+import PostInput from './PostInput'
 
 const Post = () => {
   const [showInput, setShowInput] = useState(false)
@@ -24,7 +24,7 @@ const Post = () => {
           <label className="ml-1">Title</label>
           <input onChange={e => console.log('title added')} className="shadow appearance-none border rounded w-full py-1.5 px-3 mt-1 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter the title" />
         </div>
-        <Input className="mt-5" canceled={showInput} setVisible={setShowInput} />
+        <PostInput className="mt-5" canceled={showInput} setVisible={setShowInput} />
         <DeleteButton />
       </div>
     )

@@ -1,38 +1,34 @@
-export const SET_PORTRAIT = 'SET_PORTRAIT'
-export const SET_ABOUT = 'SET_ABOUT'
+export const EDIT_ABOUT = 'EDIT_ABOUT'
 export const ADD_POST = 'ADD_POST'
-export const SET_POST_TITLE = 'SET_POST_TITLE'
-export const SET_POST_IMG = 'SET_POST_IMG'
-export const SET_POST_DESCRIP = 'SET_POST_DESCRIP'
+export const EDIT_POST = 'EDIT_POST'
+export const DELETE_POST = 'DELETE_POST'
 
-export const setPortrait = url => ({
-  type: SET_PORTRAIT,
+export const editAbout = ({ url, text }) => ({
+  type: EDIT_ABOUT,
   url,
-})
-
-export const setAbout = text => ({
-  type: SET_ABOUT,
   text,
 })
 
+let postId = 1
 export const addPost = ({ text, url, descrip }) => ({
   type: ADD_POST,
   text,
   url,
   descrip,
+  id: postId++,
 })
 
-export const setPostTitle = text => ({
-  type: SET_POST_TITLE,
-  text,
-})
-
-export const setPostImg = url => ({
-  type: SET_POST_IMG,
+export const editPost = ({
+  title, url, descrip, id,
+}) => ({
+  type: EDIT_POST,
+  title,
   url,
+  descrip,
+  id,
 })
 
-export const setPostDescrip = text => ({
-  type: SET_POST_DESCRIP,
-  text,
+export const deletePost = id => ({
+  type: DELETE_POST,
+  id,
 })

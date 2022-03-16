@@ -1,13 +1,13 @@
-import { SET_ABOUT } from '../actions'
+import { EDIT_ABOUT } from '../actions'
 
-const default_state = null
+const default_state = { url: '', text: '' }
 
 const about = (state = default_state, action) => {
-  const { type, text } = action
+  const { type, url, text } = action
 
   switch (type) {
-    case SET_ABOUT:
-      return text
+    case EDIT_ABOUT:
+      return { url, text }
 
     default:
       return state

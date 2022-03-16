@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { addPost } from '../actions'
+import { addPost, editPost, deletePost } from '../actions'
 import Post from './Post'
 import AddPostModal from './AddPostModal'
 
@@ -21,7 +21,7 @@ const Blogs = ({ dispatchAddPost }) => {
       <button type="submit" onClick={() => setModalVisible(true)} className="bg-blue-400 hover:bg-blue-500 text-white font-normal h-10 py-1 px-5 mt-2 mr-3 text-base rounded float-right">
         Add Posts
       </button>
-      <Modal />
+      {/* <Modal /> */}
       <div className="grid-cols-3 mt-6">
         {/* TODO: map posts to create post components */}
         <Post />
@@ -32,8 +32,18 @@ const Blogs = ({ dispatchAddPost }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  dispatchAddPost: ({ text, url, descrip }) => dispatch(addPost),
+const mapStateToProps = state => ({
+  text: state.posts.text, url: state.posts.url, descrip: state.posts.descrip, id: state.posts.id,
 })
 
-export default connect(null, mapDispatchToProps)(Blogs)
+const mapDispatchToProps = dispatch => ({
+  dispatchAddPost: ({ text, url, descrip }) => dispatch(addPost({ text, url, descrip })),
+  dispatchEditPost: ({
+    title, url, descrip, id,
+  }) => dispatch(editPost({
+    title, url, descrip, id,
+  })),
+  dispatchDeletePost: id => dispatch(deletePost(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blogs)
