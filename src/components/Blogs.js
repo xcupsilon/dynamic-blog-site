@@ -9,9 +9,11 @@ const Blogs = ({
 }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const appendPost = (post, index) => {
-    const { title, url, descrip } = post
-    return <Post id={index} title={title} url={url} descrip={descrip} dispatchEditPost={dispatchEditPost} dispatchDeletePost={dispatchDeletePost} key={index} />
+  const appendPost = post => {
+    const {
+      id, title, url, descrip,
+    } = post
+    return <Post id={id} title={title} url={url} descrip={descrip} dispatchEditPost={dispatchEditPost} dispatchDeletePost={dispatchDeletePost} key={id} />
   }
 
   const Modal = () => {
@@ -30,7 +32,7 @@ const Blogs = ({
       <Modal />
       <div className="grid-cols-3 mt-6">
         {/* TODO: map posts to create post components */}
-        {posts.map((post, index) => appendPost(post, index))}
+        {posts.map(post => appendPost(post))}
       </div>
     </div>
   )
