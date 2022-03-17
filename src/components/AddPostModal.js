@@ -1,7 +1,7 @@
 import React from 'react'
 import PostInput from './PostInput'
 
-const AddPostModal = ({ setModalVisible, dispatchAddPost, setPosts }) => (
+const AddPostModal = ({ setModalVisible, dispatchAddPost }) => (
   <>
     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
       <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -18,7 +18,7 @@ const AddPostModal = ({ setModalVisible, dispatchAddPost, setPosts }) => (
           </div>
           {/* body */}
           <div className="relative p-6 flex-auto">
-            <PostInput setVisible={setModalVisible} dispatchAddPost={dispatchAddPost}/>
+            <PostInput setVisible={setModalVisible} dispatchAddPost={dispatchAddPost} isEdit={false}/>
           </div>
         </div>
       </div>

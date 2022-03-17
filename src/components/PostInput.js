@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 
-const PostInput = ({ setVisible, dispatchAddPost }) => {
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
-  const [descrip, setAbout] = useState('')
+const PostInput = ({ id, text = '', image = '', description = '', setVisible, isEdit, dispatchAddPost, dispatchEditPost}) => {
+  console.log(text, image, description)
+  
+  const [title, setTitle] = useState(text)
+  const [url, setUrl] = useState(image)
+  const [descrip, setAbout] = useState(description)
 
   const submit = e => {
     e.preventDefault()
     // Add a new post
-    dispatchAddPost({ title, url, descrip })
+    if (isEdit) {
+      dispatchEditPost({ title, url, descrip, id })
+    } else {
+      dispatchAddPost({ title, url, descrip })
+    }
+    
     setVisible(false)
   }
 
@@ -32,15 +39,15 @@ const PostInput = ({ setVisible, dispatchAddPost }) => {
     <>
       <div className="mb-4">
         <label className="ml-1">Title</label>
-        <input onChange={e => setTitle(e.target.value)} className="shadow appearance-none border rounded w-full py-1.5 px-3 mt-1 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter the title" />
+        <input onChange={e => setTitle(e.target.value)} value={title} className="shadow appearance-none border rounded w-full py-1.5 px-3 mt-1 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter the title" />
       </div>
       <div className="mb-4">
         <label className="ml-1">Image</label>
-        <input onChange={e => setUrl(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter image url" />
+        <input onChange={e => setUrl(e.target.value)} value={url} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter image url" />
       </div>
       <div className="mb-4">
         <label className="ml-1">Description</label>
-        <input onChange={e => setAbout(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="post" type="text" placeholder="Enter description" />
+        <input onChange={e => setAbout(e.target.value)} value={descrip} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter description" />
       </div>
       <SubmitButton />
     </>
