@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
-const PostInput = ({ setVisible, dispatchSetPortrait, dispatchSetAbout }) => {
-  const [image, setImage] = useState('')
-  const [about, setAbout] = useState('')
+const PostInput = ({ setVisible, dispatchAddPost }) => {
+  const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
+  const [descrip, setAbout] = useState('')
 
   const submit = e => {
     e.preventDefault()
-    // TODO: change state
-    dispatchSetPortrait(image)
-    // dispatchSetAbout(about)
+    // Add a new post
+    dispatchAddPost({ title, url, descrip })
     setVisible(false)
   }
 
@@ -31,8 +31,12 @@ const PostInput = ({ setVisible, dispatchSetPortrait, dispatchSetAbout }) => {
   return (
     <>
       <div className="mb-4">
+        <label className="ml-1">Title</label>
+        <input onChange={e => setTitle(e.target.value)} className="shadow appearance-none border rounded w-full py-1.5 px-3 mt-1 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter the title" />
+      </div>
+      <div className="mb-4">
         <label className="ml-1">Image</label>
-        <input onChange={e => setImage(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter image url" />
+        <input onChange={e => setUrl(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="name" type="text" placeholder="Enter image url" />
       </div>
       <div className="mb-4">
         <label className="ml-1">Description</label>

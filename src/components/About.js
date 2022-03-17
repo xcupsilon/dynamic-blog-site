@@ -14,9 +14,9 @@ const About = ({ url, text, dispatchEditAbout }) => {
           <button type="submit" onClick={() => setShowInput(true)} className="bg-yellow-400 hover:bg-yellow-500 text-black font-normal h-10 py-1 px-5 mt-2 mr-3 text-base rounded float-right">
             Edit
           </button>
-          <div className="grid grid-cols-2 pt-10 pb-10">
-            <img src={url} alt="portrait" />
-            <div className="inline ml-10">
+          <div className="flex gap-20 pt-10 pb-10">
+            <img className= "flex-initial" src={url} alt="portrait" />
+            <div className= "flex-initial">
               {text}
             </div>
           </div>

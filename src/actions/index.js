@@ -9,10 +9,10 @@ export const editAbout = ({ url, text }) => ({
   text,
 })
 
-let postId = 1
-export const addPost = ({ text, url, descrip }) => ({
+let postId = 0
+export const addPost = ({ title, url, descrip }) => ({
   type: ADD_POST,
-  text,
+  title,
   url,
   descrip,
   id: postId++,
@@ -28,7 +28,10 @@ export const editPost = ({
   id,
 })
 
-export const deletePost = id => ({
-  type: DELETE_POST,
-  id,
-})
+export const deletePost = id => {
+  postId--
+  return ({
+    type: DELETE_POST,
+    id,
+  })
+}
