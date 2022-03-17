@@ -4,7 +4,9 @@ import { addPost, editPost, deletePost } from '../actions'
 import Post from './Post'
 import AddPostModal from './AddPostModal'
 
-const Blogs = ({ posts, dispatchAddPost, dispatchEditPost, dispatchDeletePost }) => {
+const Blogs = ({
+  posts, dispatchAddPost, dispatchEditPost, dispatchDeletePost,
+}) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   const appendPost = (post, index) => {
@@ -14,7 +16,7 @@ const Blogs = ({ posts, dispatchAddPost, dispatchEditPost, dispatchDeletePost })
 
   const Modal = () => {
     if (modalVisible) {
-      return (<AddPostModal setModalVisible={setModalVisible} dispatchAddPost={dispatchAddPost}/>)
+      return (<AddPostModal setModalVisible={setModalVisible} dispatchAddPost={dispatchAddPost} />)
     }
     return <></>
   }

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import PostInput from './PostInput'
 
-const Post = ({ id, title, url, descrip, dispatchEditPost, dispatchDeletePost }) => {
+const Post = ({
+  id, title, url, descrip, dispatchEditPost, dispatchDeletePost,
+}) => {
   const [showInput, setShowInput] = useState(false)
 
   const deletePost = e => {
     e.preventDefault()
-    console.log(id)
     dispatchDeletePost(id)
     setShowInput(false)
   }
@@ -38,16 +39,16 @@ const Post = ({ id, title, url, descrip, dispatchEditPost, dispatchDeletePost })
     }
     return (
       <div className="p-7">
-        <PostInput className="mt-5" id={id} text={title} image={url} description={descrip} isEdit={true} setVisible={setShowInput} dispatchEditPost={dispatchEditPost} />
+        <PostInput className="mt-5" id={id} text={title} image={url} description={descrip} isEdit setVisible={setShowInput} dispatchEditPost={dispatchEditPost} />
         <DeleteButton />
       </div>
     )
   }
 
   return (
-      <div className="p-0 w-1/3 border-solid border-2 border-gray-100 inline-grid">
-        <EditPost />
-      </div>
+    <div className="p-0 w-1/3 border-solid border-2 border-gray-100 inline-grid">
+      <EditPost />
+    </div>
   )
 }
 

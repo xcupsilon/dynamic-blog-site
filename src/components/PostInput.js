@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-const PostInput = ({ id, text = '', image = '', description = '', setVisible, isEdit, dispatchAddPost, dispatchEditPost}) => {
-  console.log(text, image, description)
-  
+const PostInput = ({
+  id, text = '', image = '', description = '', setVisible, isEdit, dispatchAddPost, dispatchEditPost,
+}) => {
   const [title, setTitle] = useState(text)
   const [url, setUrl] = useState(image)
   const [descrip, setAbout] = useState(description)
@@ -11,11 +11,12 @@ const PostInput = ({ id, text = '', image = '', description = '', setVisible, is
     e.preventDefault()
     // Add a new post
     if (isEdit) {
-      dispatchEditPost({ title, url, descrip, id })
+      dispatchEditPost({
+        title, url, descrip, id,
+      })
     } else {
       dispatchAddPost({ title, url, descrip })
     }
-    
     setVisible(false)
   }
 

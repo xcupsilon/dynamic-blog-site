@@ -18,7 +18,7 @@ const AddPostModal = ({ setModalVisible, dispatchAddPost }) => (
           </div>
           {/* body */}
           <div className="relative p-6 flex-auto">
-            <PostInput setVisible={setModalVisible} dispatchAddPost={dispatchAddPost} isEdit={false}/>
+            <PostInput setVisible={setModalVisible} dispatchAddPost={dispatchAddPost} isEdit={false} />
           </div>
         </div>
       </div>

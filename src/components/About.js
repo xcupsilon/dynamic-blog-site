@@ -9,35 +9,33 @@ const About = ({ url, text, dispatchEditAbout }) => {
 
   const Edit = () => {
     if (!showInput) {
-      if (url == '') {
+      if (url === '') {
         return (
           <>
             <button type="submit" onClick={() => setShowInput(true)} className="bg-yellow-400 hover:bg-yellow-500 text-black font-normal h-10 py-1 px-5 mt-2 mr-3 text-base rounded float-right">
               Edit
             </button>
             <div className="flex gap-20 pt-10 pb-10">
-              <img className= "flex-initial"/>
-              <div className= "flex-initial text-3xl">
-                {text}
-              </div>
-            </div>
-          </>
-        )
-      } else {
-        return (
-          <>
-            <button type="submit" onClick={() => setShowInput(true)} className="bg-yellow-400 hover:bg-yellow-500 text-black font-normal h-10 py-1 px-5 mt-2 mr-3 text-base rounded float-right">
-              Edit
-            </button>
-            <div className="flex gap-20 pt-10 pb-10">
-              <img className= "flex-initial" src={url} alt="portrait" />
-              <div className= "flex-initial text-3xl">
+              <div className="flex-initial text-3xl">
                 {text}
               </div>
             </div>
           </>
         )
       }
+      return (
+        <>
+          <button type="submit" onClick={() => setShowInput(true)} className="bg-yellow-400 hover:bg-yellow-500 text-black font-normal h-10 py-1 px-5 mt-2 mr-3 text-base rounded float-right">
+            Edit
+          </button>
+          <div className="flex gap-20 pt-10 pb-10">
+            <img className="flex-initial" src={url} alt="portrait" />
+            <div className="flex-initial text-3xl">
+              {text}
+            </div>
+          </div>
+        </>
+      )
     }
     return (
       <>
